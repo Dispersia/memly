@@ -1,26 +1,28 @@
 package io.dispersia.memlywear
 
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.*
+import androidx.navigation3.runtime.entryProvider
+import androidx.navigation3.runtime.rememberNavBackStack
+import androidx.navigation3.ui.NavDisplay
 
 @Composable
 fun App(
     graph: AppGraph,
 ) {
-    val backStack = rememberNavBackStack(Home)
+    val backStack = remember { mutableStateListOf(Home) }
 
     NavDisplay(
         backStack = backStack,
+        onBack = {
+            backStack.removeLastOrNull()
+        },
         entryProvider = entryProvider {
             entry<Home> {
-                val factory = remember(graph) {
-                    HomeViewModelFactory(graph)
+                val viewModel = remember {
+                    HomeViewModel(
+                        repository = graph.counterRepository
+                    )
                 }
-
-                val viewModel: HomeViewModel = viewModel(
-                    factory = factory
-                )
 
                 HomeRoute(viewModel)
             }

@@ -3,11 +3,7 @@ package io.dispersia.memlywear
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asSharedFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
 class HomeViewModel(
@@ -56,17 +52,5 @@ class HomeViewModel(
                 )
             }
         }
-    }
-}
-
-class HomeViewModelFactory(
-    private val graph: AppGraph
-) : ViewModelProvider.Factory {
-    override fun <T : ViewModel> create(
-        modelClass: Class<T>
-    ): T {
-        return HomeViewModel(
-            repository = graph.counterRepository
-        ) as T
     }
 }
