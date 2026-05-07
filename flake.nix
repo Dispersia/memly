@@ -44,6 +44,7 @@
         pkgs.gradle
         pkgs.git
         pkgs.unzip
+        pkgs.just
 
         pkgs.alejandra
       ];

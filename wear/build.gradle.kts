@@ -37,6 +37,13 @@ android {
     buildFeatures {
         compose = true
     }
+    sourceSets {
+        getByName("main") {
+            kotlin.srcDirs("src")
+            res.srcDirs("res")
+            manifest.srcFile("AndroidManifest.xml")
+        }
+    }
 }
 
 dependencies {
