@@ -1,20 +1,21 @@
 [versions]
-agp = "9.2.0"
-coreKtx = "1.10.1"
+agp = "9.2.1"
+coreKtx = "1.18.0"
 junit = "4.13.2"
-junitVersion = "1.1.5"
-espressoCore = "3.5.1"
-lifecycleRuntimeKtx = "2.6.1"
-activityCompose = "1.8.0"
-kotlin = "2.2.10"
-composeBom = "2026.02.01"
-playServicesWearable = "18.0.0"
-composeMaterial3 = "1.5.6"
-composeFoundation = "1.5.6"
-composeUiTooling = "1.5.6"
+junitVersion = "1.3.0"
+espressoCore = "3.7.0"
+lifecycleRuntimeKtx = "2.10.0"
+activityCompose = "1.13.0"
+kotlin = "2.3.21"
+composeBom = "2026.05.00"
+playServicesWearable = "20.0.1"
+composeMaterial3 = "1.6.1"
+composeFoundation = "1.6.1"
+composeUiTooling = "1.6.1"
 wearToolingPreview = "1.0.0"
 coreSplashscreen = "1.2.0"
-jetbrainsKotlinJvm = "2.2.10"
+jetbrainsKotlinJvm = "2.3.21"
+metro = "1.0.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -38,8 +39,12 @@ compose-ui-tooling = { group = "androidx.wear.compose", name = "compose-ui-tooli
 androidx-wear-tooling-preview = { group = "androidx.wear", name = "wear-tooling-preview", version.ref = "wearToolingPreview" }
 androidx-core-splashscreen = { group = "androidx.core", name = "core-splashscreen", version.ref = "coreSplashscreen" }
 
+metro-runtime = { group = "dev.zacsweers.metro", name = "runtime", version.ref = "metro" }
+metro-android = { group = "dev.zacsweers.metro", name = "metrox-android", version.ref = "metro" }
+
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }
+metro = { id = "dev.zacsweers.metro", version.ref = "metro" }
 

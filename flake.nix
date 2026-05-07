@@ -32,7 +32,7 @@
       includeEmulator = true;
       includeSystemImages = true;
 
-      systemImageTypes = ["android-wear"];
+      systemImageTypes = ["android-wear" "google_apis_playstore"];
     };
 
     androidSdk = "${android.androidsdk}/libexec/android-sdk";
@@ -64,6 +64,15 @@
             -n wearos \
             -k "system-images;android-36;android-wear-signed;x86_64" \
             --device "wearos_large_round"
+        fi
+
+        if ! emulator -list-avds | grep -q phone; then
+          echo "Creating Phone AVD..."
+
+          yes | avdmanager create avd \
+            -n phone \
+            -k "system-images;android-36;google_apis_playstore;x86_64" \
+            --device "pixel_9_pro"
         fi
       '';
     };

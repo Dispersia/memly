@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.metro)
 }
 
 android {
@@ -57,7 +58,12 @@ dependencies {
     implementation(libs.androidx.wear.tooling.preview)
     implementation(libs.compose.material3)
     implementation(libs.compose.ui.tooling)
+    implementation(libs.metro.runtime)
+    implementation(libs.metro.android)
     implementation(libs.play.services.wearable)
+    implementation("androidx.activity:activity-ktx:1.9.1")
+    implementation("androidx.navigation3:navigation3-runtime:1.1.1")
+    implementation("androidx.navigation3:navigation3-ui:1.1.1")
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
