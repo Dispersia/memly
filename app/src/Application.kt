@@ -1,4 +1,4 @@
-package io.dispersia.memlywear
+package io.dispersia.memly
 
 import android.app.Application
 import dev.zacsweers.metro.createGraph

@@ -1,4 +1,4 @@
-package io.dispersia.memlywear
+package io.dispersia.memly
 
 data class HomeState(
     val loading: Boolean = false,

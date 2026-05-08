@@ -3,17 +3,16 @@
  * most up to date changes to the libraries and their usages.
  */
 
-package io.dispersia.memlywear.presentation
+package io.dispersia.memly
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.google.android.gms.wearable.Wearable
 import dev.zacsweers.metro.createGraph
-import io.dispersia.memlywear.App
-import io.dispersia.memlywear.AppGraph
-import io.dispersia.memlywear.presentation.theme.MemlyTheme
+import io.dispersia.memly.App
+import io.dispersia.memly.AppGraph
+import io.dispersia.memly.presentation.theme.MemlyTheme
 import kotlin.getValue
 
 class MainActivity : ComponentActivity() {
@@ -21,7 +20,6 @@ class MainActivity : ComponentActivity() {
         get() = (application as App).appGraph
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        installSplashScreen()
         super.onCreate(savedInstanceState)
         val dataClient = Wearable.getDataClient(this)
         setContent {

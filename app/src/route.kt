@@ -1,4 +1,4 @@
-package io.dispersia.memlywear
+package io.dispersia.memly
 
 import kotlinx.serialization.Serializable
 

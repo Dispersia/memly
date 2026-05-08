@@ -1,7 +1,7 @@
-package io.dispersia.memlywear.presentation.theme
+package io.dispersia.memly.presentation.theme
 
 import androidx.compose.runtime.Composable
-import androidx.wear.compose.material3.MaterialTheme
+import androidx.compose.material3.MaterialTheme
 
 @Composable
 fun MemlyTheme(

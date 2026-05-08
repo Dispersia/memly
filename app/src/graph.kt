@@ -1,4 +1,4 @@
-package io.dispersia.memlywear
+package io.dispersia.memly
 
 import dev.zacsweers.metro.AppScope
 import dev.zacsweers.metro.DependencyGraph

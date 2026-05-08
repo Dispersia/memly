@@ -1,4 +1,4 @@
-package io.dispersia.memlywear
+package io.dispersia.memly
 
 import androidx.compose.runtime.*
 import androidx.navigation3.runtime.entryProvider
