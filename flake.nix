@@ -64,6 +64,9 @@
             -n wearos \
             -k "system-images;android-36;android-wear-signed;x86_64" \
             --device "wearos_large_round"
+
+          sed -i 's/hw.keyboard=no/hw.keyboard=yes/' \
+            "$HOME/.android/avd/wearos.avd/config.ini"
         fi
 
         if ! emulator -list-avds | grep -q phone; then
@@ -73,6 +76,9 @@
             -n phone \
             -k "system-images;android-36;google_apis_playstore;x86_64" \
             --device "pixel_9_pro"
+
+          sed -i 's/hw.keyboard=no/hw.keyboard=yes/' \
+            "$HOME/.android/avd/phone.avd/config.ini"
         fi
       '';
     };

@@ -1,19 +1,12 @@
-/* While this template provides a good starting point for using Wear Compose, you can always
- * take a look at https://github.com/android/wear-os-samples/tree/main/ComposeStarter to find the
- * most up to date changes to the libraries and their usages.
- */
-
 package io.dispersia.memly
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
 import com.google.android.gms.wearable.Wearable
-import dev.zacsweers.metro.createGraph
-import io.dispersia.memly.App
-import io.dispersia.memly.AppGraph
-import io.dispersia.memly.presentation.theme.MemlyTheme
-import kotlin.getValue
+import io.dispersia.memly.core.presentation.theme.MemlyTheme
+import io.dispersia.memly.navigation.Router
 
 class MainActivity : ComponentActivity() {
     private val graph: AppGraph
@@ -21,10 +14,13 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        enableEdgeToEdge()
         val dataClient = Wearable.getDataClient(this)
+
         setContent {
             MemlyTheme {
-                App(graph = graph)
+                Router(graph = graph)
             }
         }
     }
