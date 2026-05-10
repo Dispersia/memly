@@ -11,15 +11,16 @@ import io.dispersia.memlywear.App
 class ReviewComplicationService :
     SuspendingComplicationDataSourceService() {
 
-    val graph =
+    private val repo by lazy {
         (applicationContext as App)
             .appGraph
             .counterRepository
+    }
 
     override suspend fun onComplicationRequest(
         request: ComplicationRequest
     ): ComplicationData? {
-        val dueCount = graph.loadInitialCount()
+        val dueCount = repo.loadInitialCount()
 
         return ShortTextComplicationData.Builder(
             text = PlainComplicationText.Builder(
@@ -42,7 +43,7 @@ class ReviewComplicationService :
             ).build(),
             contentDescription = PlainComplicationText.Builder(
             "Cards Due"
-        ).build()
+            ).build()
         ).build()
     }
 }

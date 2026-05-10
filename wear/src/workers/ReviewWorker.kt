@@ -14,10 +14,11 @@ class ReviewWorker(
     context: Context,
     params: WorkerParameters
 ): CoroutineWorker(context, params) {
-    private val repo =
+    private val repo by lazy {
         (applicationContext as App)
             .appGraph
             .counterRepository
+    }
 
     override suspend fun doWork(): Result {
         val hasDueCards = repo.loadInitialCount() > 0
