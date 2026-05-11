@@ -13,7 +13,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "io.dispersia.memlywear"
+        applicationId = "io.dispersia.memly"
         minSdk = 34
         targetSdk = 36
         versionCode = 1
@@ -62,6 +62,7 @@ dependencies {
     implementation(libs.metro.runtime)
     implementation(libs.metro.android)
     implementation(libs.play.services.wearable)
+    implementation(libs.kotlinx.coroutines.play.services)
     implementation(libs.androidx.activity.ktx)
     implementation(libs.androidx.navigation3.runtime)
     implementation(libs.androidx.navigation3.ui)
@@ -69,6 +70,8 @@ dependencies {
     implementation(libs.androidx.protolayout)
     implementation(libs.androidx.work.runtime.ktx)
     implementation(libs.androidx.watchface.complications.data.source)
+    implementation(libs.androidx.wear.input)
+    implementation(project(":shared"))
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.test.manifest)

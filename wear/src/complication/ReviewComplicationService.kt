@@ -14,13 +14,13 @@ class ReviewComplicationService :
     private val repo by lazy {
         (applicationContext as App)
             .appGraph
-            .counterRepository
+            .wearCardRepository
     }
 
     override suspend fun onComplicationRequest(
         request: ComplicationRequest
-    ): ComplicationData? {
-        val dueCount = repo.loadInitialCount()
+    ): ComplicationData {
+        val dueCount = repo.getDueCount()
 
         return ShortTextComplicationData.Builder(
             text = PlainComplicationText.Builder(
@@ -35,14 +35,12 @@ class ReviewComplicationService :
     }
 
     override fun getPreviewData(type: ComplicationType): ComplicationData? {
-        val dueCount = 0
-
         return ShortTextComplicationData.Builder(
             text = PlainComplicationText.Builder(
-                "$dueCount due"
+                "0 due"
             ).build(),
             contentDescription = PlainComplicationText.Builder(
-            "Cards Due"
+                "Cards Due"
             ).build()
         ).build()
     }

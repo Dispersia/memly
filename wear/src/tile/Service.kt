@@ -12,13 +12,13 @@ class ReviewTileService : Material3TileService() {
     private val repo by lazy {
         (application as App)
             .appGraph
-            .counterRepository
+            .wearCardRepository
     }
 
     override suspend fun MaterialScope.tileResponse(
         requestParams: RequestBuilders.TileRequest
     ): TileBuilders.Tile {
-        val count = repo.loadInitialCount()
+        val count = repo.getDueCount()
 
         val layout = primaryLayout(
             titleSlot = null,
@@ -33,7 +33,7 @@ class ReviewTileService : Material3TileService() {
                 action = ActionBuilders.LaunchAction.Builder()
                     .setAndroidActivity(
                         ActionBuilders.AndroidActivity.Builder()
-                            .setPackageName("io.dispersia.memlywear")
+                            .setPackageName("io.dispersia.memly")
                             .setClassName("io.dispersia.memlywear.presentation.MainActivity")
                             .build()
                     )

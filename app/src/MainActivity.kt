@@ -4,9 +4,11 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import com.google.android.gms.wearable.Wearable
 import io.dispersia.memly.core.presentation.theme.MemlyTheme
 import io.dispersia.memly.navigation.Router
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
     private val graph: AppGraph
@@ -16,7 +18,13 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         enableEdgeToEdge()
-        val dataClient = Wearable.getDataClient(this)
+
+        CoroutineScope(Dispatchers.IO).launch {
+            runCatching {
+                graph.wearDataManager.syncDueCardsToWatch()
+                graph.wearDataManager.syncSettingsToWatch()
+            }
+        }
 
         setContent {
             MemlyTheme {
@@ -25,4 +33,3 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-
